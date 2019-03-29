@@ -6,11 +6,24 @@ public class Spider : Enemy
 {
     void Start()
     {
-        Attack();
+
+        Init();
+
+       // childAnimator = animator;
+    }
+
+    protected override void Init()
+    {
+        base.Init();
     }
 
     public override void Update()
     {
-        Debug.Log("Spider Updating");
+        if(childAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            return;
+        }
+
+        MoveBetweeenPoints();
     }
 }
